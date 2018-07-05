@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -10,6 +11,19 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBleIUu6r0zxxjBhkKWfywsNAO2kD12dms",
+  authDomain: "clientcallback.firebaseapp.com",
+  databaseURL: "https://clientcallback.firebaseio.com",
+  projectId: "clientcallback",
+  storageBucket: "clientcallback.appspot.com",
+  messagingSenderId: "513090036502"
+};
 
 @NgModule({
   declarations: [
@@ -21,7 +35,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(firebaseConfig,'demo104'),
+    AngularFirestoreModule.enablePersistence() //.enablePersistence() used for offline storage
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +52,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
