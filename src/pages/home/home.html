@@ -8,13 +8,18 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col col-3 *ngFor='let turn of items | async'>
-        <ion-card>
+      <ion-col col-md-4 class="turnCard" *ngFor='let turn of items | async' (click)="changeStatusOfTurn(turn)">
+        <ion-card [ngClass]="turn.status == 'CREATED' ? 'active-turn' : 'inactive-turn'">
           <ion-card-header>
-            Header
+            <strong>{{'Orden'}}: {{turn.order}} </strong>
           </ion-card-header>
           <ion-card-content>
-            {{turn|json}}
+            <div>
+              Cliente {{turn.nameClient}} <br>
+              <!-- {{turn.createAt | date: "m/d/Y" }} -->
+              {{turn.status}}
+            </div>
+           
           </ion-card-content>
         </ion-card>
       </ion-col>

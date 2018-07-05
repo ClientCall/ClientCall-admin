@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { ComponentsModule } from '../components/components.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBleIUu6r0zxxjBhkKWfywsNAO2kD12dms",
@@ -39,7 +40,8 @@ const firebaseConfig = {
     HttpClientModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig,'demo104'),
-    AngularFirestoreModule.enablePersistence() //.enablePersistence() used for offline storage
+    AngularFirestoreModule.enablePersistence(), //.enablePersistence() used for offline storage
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

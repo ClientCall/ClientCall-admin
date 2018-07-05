@@ -17,9 +17,6 @@ En el navegador [http://localhost:4200](http://localhost:4200)
 
 ## Deploy in github pages
 ```sh
-    npm run deploy #Este corre el deploy en modo prod y aot, y finalmente sube todo a github pages
-```
-```sh
   npm install rxjs@6 rxjs-compat@6 --save # error ERROR TypeError: Object(…) is not a function” using AngularFirestore and firebase
 ```
 
